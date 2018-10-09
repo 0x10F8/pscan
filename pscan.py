@@ -325,7 +325,12 @@ if target_host is None or target_port_string is None:
     exit(0)
 
 # Parse ports from string arguments
-target_ports = parse_port_string(target_port_string)
+try:
+    target_ports = parse_port_string(target_port_string)
+except InvalidPortFormatError:
+    print("Invalid port parameter format")
+    exit(0)
+
 if not (len(target_ports) > 0):
     logging.error("You must specify a target host and port[s]")
     option_parser.print_usage()
@@ -338,13 +343,17 @@ except InvalidHostError:
     print("Host %s could not be resolved" % target_host)
     exit(0)
 
-if up:
+if up:how h
     print("Host %s(%s) is up" % (target_host, ip))
 else:
     print("Host %s is down or not responding to ICMP requests" % target_host)
 
 # Do the port scanning
-open_ports = filter_results(scan_port_range(target_host, target_ports, user_timeout), open_port_filter)
+try:
+    open_ports = filter_results(scan_port_range(target_host, target_ports, user_timeout), open_port_filter)
+except InvalidPortError as e:
+    print("Invalid port number %d" % e.port)
+    exit(0)
 
 # Print the results
 print_results(open_ports)
