@@ -1,5 +1,5 @@
 # pscan
-A simple multi-threaded port scanner written in python3
+A simple multi-threaded port scanner written in python3, inspired by the Violent Python book by TJ O'Connor.
 ```
 $ ./pscan.py -h
 
