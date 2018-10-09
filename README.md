@@ -1,5 +1,5 @@
 # pscan
-A simple port scanner written in python3
+A simple multi-threaded port scanner written in python3
 ```
 $ ./pscan.py -h
 
