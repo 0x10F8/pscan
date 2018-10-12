@@ -343,7 +343,7 @@ except InvalidHostError:
     print("Host %s could not be resolved" % target_host)
     exit(0)
 
-if up:how h
+if up:
     print("Host %s(%s) is up" % (target_host, ip))
 else:
     print("Host %s is down or not responding to ICMP requests" % target_host)
